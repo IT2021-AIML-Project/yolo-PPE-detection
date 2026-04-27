@@ -33,15 +33,16 @@
   cursor: pointer;
 }
 
+/* ── Camera box ──────────────────────────────────────────────────────────── */
 .camBox {
   position: relative;
-  background: var(--surface);
+  background: #000;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
   width: 100%;
+  max-width: 720px;
   aspect-ratio: 16/9;
-  max-width: 640px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,6 +57,13 @@
 
 .videoHidden { display: none; }
 
+.boxOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
 .camPlaceholder {
   display: flex;
   flex-direction: column;
@@ -69,49 +77,67 @@
   opacity: 0.4;
 }
 
-.boxOverlay {
+/* ── Live HUD (top-left overlay) ─────────────────────────────────────────── */
+.hud {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
   pointer-events: none;
 }
 
-.camOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 17, 23, 0.65);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--text);
-  font-weight: 500;
-}
-
-.spinner {
-  width: 28px;
-  height: 28px;
-  border: 3px solid rgba(255,255,255,0.15);
-  border-top-color: var(--accent);
+.hudDot {
+  width: 7px;
+  height: 7px;
+  background: var(--danger);
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
+  animation: pulse 1s ease-in-out infinite;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
 
+.hudFps     { color: #fff; }
+.hudLatency { color: var(--text-muted); }
+
+.hudViolation {
+  background: rgba(247, 95, 95, 0.25);
+  color: var(--danger);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* ── Controls ────────────────────────────────────────────────────────────── */
 .controls {
   display: flex;
   gap: 10px;
-  margin-top: 16px;
+  margin-top: 14px;
   flex-wrap: wrap;
 }
 
 .btnPrimary {
   background: var(--accent);
   color: #fff;
+  padding: 9px 18px;
 }
 .btnPrimary:hover:not(:disabled) { background: var(--accent-hover); }
+
+.btnLive {
+  background: var(--danger);
+  color: #fff;
+  padding: 9px 18px;
+}
+.btnLive:hover:not(:disabled) { background: #e04040; }
 
 .btnSecondary {
   background: var(--surface-2);
@@ -120,25 +146,93 @@
 }
 .btnSecondary:hover:not(:disabled) { background: var(--border); }
 
+.btnSave {
+  background: rgba(78,203,113,0.12);
+  color: var(--success);
+  border: 1px solid rgba(78,203,113,0.3);
+}
+.btnSave:hover:not(:disabled) { background: rgba(78,203,113,0.2); }
+
 .btnWarning {
-  background: rgba(247, 183, 79, 0.15);
+  background: rgba(247,183,79,0.15);
   color: var(--warning);
-  border: 1px solid rgba(247, 183, 79, 0.3);
+  border: 1px solid rgba(247,183,79,0.3);
+  padding: 9px 18px;
 }
 
 .btnDanger {
-  background: rgba(247, 95, 95, 0.12);
+  background: rgba(247,95,95,0.12);
   color: var(--danger);
-  border: 1px solid rgba(247, 95, 95, 0.3);
+  border: 1px solid rgba(247,95,95,0.3);
 }
-.btnDanger:hover { background: rgba(247, 95, 95, 0.2); }
+.btnDanger:hover:not(:disabled) { background: rgba(247,95,95,0.2); }
 
+/* ── Error ───────────────────────────────────────────────────────────────── */
 .error {
-  background: rgba(247, 95, 95, 0.12);
-  border: 1px solid rgba(247, 95, 95, 0.4);
+  background: rgba(247,95,95,0.12);
+  border: 1px solid rgba(247,95,95,0.4);
   color: var(--danger);
   border-radius: var(--radius);
   padding: 12px 16px;
   margin-top: 16px;
   font-size: 13px;
+}
+
+/* ── Live results strip ──────────────────────────────────────────────────── */
+.liveResults {
+  margin-top: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  max-width: 720px;
+}
+
+.liveResultsRow {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.liveCount {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.liveCountNum {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.liveCountLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.liveTagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tagViolation {
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(247,95,95,0.12);
+  color: var(--danger);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.tagOk {
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(78,203,113,0.12);
+  color: var(--success);
+  padding: 3px 10px;
+  border-radius: 20px;
 }
