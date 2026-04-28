@@ -1,0 +1,396 @@
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.sub {
+  color: var(--text-muted);
+}
+
+.refreshBtn {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.refreshBtn:hover:not(:disabled) { background: var(--border); }
+
+/* ── Filter tabs ─────────────────────────────────────────────────────────── */
+.filterRow {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  background: var(--surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+.filterBtn:hover { background: var(--surface-2); color: var(--text); }
+.filterActive {
+  background: var(--surface-2);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Class frequency ─────────────────────────────────────────────────────── */
+.classFreqBox {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.classFreqTitle {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.classFreqRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.classFreqItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.classChip {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.chipOk        { background: rgba(78,203,113,0.12);  color: var(--success); }
+.chipViolation { background: rgba(247,95,95,0.12);   color: var(--danger); }
+
+.classCount {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── Source chip ─────────────────────────────────────────────────────────── */
+.sourceChip {
+  font-size: 11px;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+/* ── Video group specifics ───────────────────────────────────────────────── */
+.miniTimeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 6px;
+}
+
+.miniTick {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  cursor: default;
+}
+
+.expandBtn {
+  background: transparent;
+  color: var(--accent);
+  font-size: 12px;
+  padding: 4px 0;
+  margin-top: 4px;
+}
+.expandBtn:hover { text-decoration: underline; }
+
+.frameList {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+}
+
+.frameRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px;
+  background: var(--surface-2);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.frameRowViolation { background: rgba(247,95,95,0.07); }
+
+.frameNum  { color: var(--text-muted); min-width: 32px; }
+.frameTs   { color: var(--text-muted); min-width: 40px; }
+.frameDets { color: var(--text); }
+.frameViol { color: var(--danger); font-weight: 600; }
+.frameMs   { color: var(--accent); margin-left: auto; }
+
+/* ── Pagination ──────────────────────────────────────────────────────────── */
+.paginationRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.pageBtn {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 7px 16px;
+}
+.pageBtn:hover:not(:disabled) { background: var(--border); }
+
+.pageInfo {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.error {
+  background: rgba(247, 95, 95, 0.12);
+  border: 1px solid rgba(247, 95, 95, 0.4);
+  color: var(--danger);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 600px) {
+  .statsRow { grid-template-columns: repeat(2, 1fr); }
+}
+
+.statCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statValue {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.loadingBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  padding: 24px 0;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.empty {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 48px 0;
+  font-size: 15px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cardViolation { border-left: 3px solid var(--danger); }
+.cardOk { border-left: 3px solid var(--success); }
+
+.cardLeft {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.cardTime {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.cardDetail {
+  font-size: 12px;
+  color: var(--text-muted);
+  width: 100%;
+}
+
+.cardId {
+  font-size: 11px;
+  color: var(--border);
+  font-family: monospace;
+  width: 100%;
+}
+
+.violationTag {
+  font-size: 11px;
+  background: rgba(247, 95, 95, 0.12);
+  color: var(--danger);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.cardRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.viewLink {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  background: var(--surface-2);
+  border-radius: 6px;
+  color: var(--text);
+}
+.viewLink:hover { text-decoration: none; background: var(--border); }
+
+.deleteBtn {
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 6px 10px;
+}
+.deleteBtn:hover:not(:disabled) { color: var(--danger); }
+
+/* ── Model info card ─────────────────────────────────────────────────── */
+.modelCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 28px;
+}
+
+.modelTitle {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.modelGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.modelStat {
+  background: var(--surface-2);
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.modelStatLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modelStatValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.classTagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.classTag {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.classTagOk        { background: rgba(78,203,113,0.12); color: var(--success); }
+.classTagViolation { background: rgba(247,95,95,0.12);  color: var(--danger); }

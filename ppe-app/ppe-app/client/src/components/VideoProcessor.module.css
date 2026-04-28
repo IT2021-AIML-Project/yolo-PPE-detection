@@ -1,0 +1,198 @@
+.container {
+  margin-top: 20px;
+}
+
+/* ── Video row ─────────────────────────────────────────────────────────────── */
+.videoRow {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.panel {
+  flex: 1;
+  min-width: 260px;
+}
+
+.panelLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.timing {
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.video {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  background: #000;
+  border-radius: var(--radius);
+}
+
+.violationBanner {
+  margin-top: 6px;
+  background: rgba(247,95,95,0.12);
+  border: 1px solid rgba(247,95,95,0.3);
+  color: var(--danger);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ── Controls ──────────────────────────────────────────────────────────────── */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.btnRun {
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 20px;
+}
+.btnRun:hover { background: var(--accent-hover); }
+
+.btnCancel {
+  background: rgba(247,95,95,0.12);
+  color: var(--danger);
+  border: 1px solid rgba(247,95,95,0.3);
+}
+
+.speedRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.speedLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.speedSelect {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.progressBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.progressLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.progressTrack {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.2s ease;
+}
+
+/* ── Error ─────────────────────────────────────────────────────────────────── */
+.error {
+  background: rgba(247,95,95,0.12);
+  border: 1px solid rgba(247,95,95,0.4);
+  color: var(--danger);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+/* ── Stats row ─────────────────────────────────────────────────────────────── */
+.statsRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.stat {
+  flex: 1;
+  min-width: 100px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statValue {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Frame timeline ────────────────────────────────────────────────────────── */
+.timeline {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.timelineTitle {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.timelineRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tick {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  cursor: default;
+  transition: transform 0.1s;
+}
+
+.tick:hover { transform: scale(1.4); }

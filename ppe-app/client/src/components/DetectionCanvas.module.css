@@ -1,0 +1,20 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  line-height: 0; /* prevents gap under image */
+}
+
+.media {
+  display: block;
+  max-width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* clicks pass through to the image */
+}

@@ -1,0 +1,63 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 32px;
+  height: 60px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.logoIcon {
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.tab {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+.tab:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.tabActive {
+  background: var(--surface-2);
+  color: var(--accent);
+}
+
+.main {
+  flex: 1;
+  padding: 32px;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
